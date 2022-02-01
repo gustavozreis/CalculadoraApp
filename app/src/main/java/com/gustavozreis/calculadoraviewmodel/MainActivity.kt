@@ -9,8 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun text() {
-        if (R.string.app_name.toString() == "app_name")
-    }
-    
+
+
 }
