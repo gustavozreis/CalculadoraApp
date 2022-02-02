@@ -3,10 +3,8 @@ package com.gustavozreis.calculadoraviewmodel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.gustavozreis.calculadoraviewmodel.Model.CalculatorViewModel
-import com.gustavozreis.calculadoraviewmodel.Utils.Utils
+import com.gustavozreis.calculadoraviewmodel.model.CalculatorViewModel
 import com.gustavozreis.calculadoraviewmodel.databinding.ActivityMainBinding
-import kotlin.properties.ReadOnlyProperty
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val viewModel: CalculatorViewModel by viewModels()
 
         val displayDigits = binding.tvDisplayDigits
-        displayDigits.text = viewModel.displayDigits
+        displayDigits.text = viewModel.displayDigitsList[0]
 
     }
 

@@ -1,6 +1,5 @@
-package com.gustavozreis.calculadoraviewmodel.Model
+package com.gustavozreis.calculadoraviewmodel.model
 
-import android.view.View
 import androidx.lifecycle.ViewModel
 
 class CalculatorViewModel : ViewModel() {

@@ -1,12 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.gustavozreis.calculadoraviewmodel"
@@ -57,8 +55,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
 
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
-
-    implementation "androidx.lifecycle:lifecycleviewmodel:2.2.0"
 
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
 }

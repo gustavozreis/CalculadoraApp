@@ -7,7 +7,7 @@
 
         <variable
             name="calculatorViewModel"
-            type="com.gustavozreis.calculadoraviewmodel.Model.CalculatorViewModel" />
+            type="com.gustavozreis.calculadoraviewmodel.model.CalculatorViewModel" />
     </data>
 
     <LinearLayout
@@ -44,7 +44,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
-                    android:onClick="@{() -> calculatorViewModel.appendDigit()}"
+                    android:onClick='@{() -> calculatorViewModel.appendDigit("7")}'
                     android:text="@string/seven"
                     android:textSize="35sp" />
 
