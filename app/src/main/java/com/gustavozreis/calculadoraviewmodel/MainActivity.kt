@@ -30,7 +30,13 @@ class MainActivity : AppCompatActivity() {
 
     // função tem como parametro o texto (número) do botão e adiciona ao final do textview com o número
     fun appendDigit(view: TextView) {
-        displayDigits?.append(view.text)
+        if (viewModel.numSeguranca == false) {
+            displayDigits?.append(view.text)
+        } else {
+            displayDigits?.text = ""
+            viewModel.numSeguranca = false
+            displayDigits?.append(view.text)
+        }
     }
 
     // Função que alteram as variáveis de entrada
@@ -40,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
-        viewModel.tempList[2] = displayDigits.toString()
+        viewModel.tempList[0] = displayDigits?.text.toString()
         displayDigits?.text = ""
         viewModel.tempList[1] = view.text.toString()
     }
@@ -49,6 +55,14 @@ class MainActivity : AppCompatActivity() {
     fun resultado() {
         val resultado: Int = viewModel.resultadoDaOperacao(displayDigits as TextView)
         displayDigits?.text = resultado.toString()
+    }
+
+    // Função que limpa o numero da tela
+    fun clear() {
+        viewModel.tempList[0] = ""
+        viewModel.tempList[1] = "+"
+        viewModel.tempList[2] = "0"
+        displayDigits?.text = "0"
     }
 
 

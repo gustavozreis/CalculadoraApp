@@ -15,27 +15,32 @@ class CalculatorViewModel : ViewModel() {
     // Variaveis de entrada para a operação
     var numPrimeiro: Int = 0
     var numSegundo: Int = 0
-    var operacao: String = ""
+    var operacao: String = "+"
+
+    // Variável de seguranca para zerar a calculadora apos clilcar em outro numero apos receber
+    // resultado
+    var numSeguranca: Boolean = false
 
     // Função que retorna o resultado
     fun resultadoDaOperacao(view: TextView): Int {
         var resultado: Int = 0
-        tempList.add(view.text.toString())
+        tempList[2] = view.text.toString()
         if (tempList[2] == "") tempList[2] = "0"
         if (tempList[0] == "") tempList[0] = "0"
+        val num1 = tempList[0].toInt()
+        val num2 = tempList[2].toInt()
         when (tempList[1]) {
-            "+" -> resultado = tempList[0].toInt() + tempList[2].toInt()
-            "-" -> resultado = tempList[0].toInt() - tempList[2].toInt()
-            "/" -> resultado = tempList[0].toInt() * tempList[2].toInt()
-            "*" -> resultado = tempList[0].toInt() / tempList[2].toInt()
+            "+" -> resultado = num1 + num2
+            "-" -> resultado = num1 - num2
+            "/" -> resultado = num1 / num2
+            "*" -> resultado = num1 * num2
         }
-        tempList.clear()
+        tempList[0] = "0"
+        tempList[1] = "+"
+        tempList[2] = "0"
+
+        numSeguranca = true
         return resultado
-    }
-
-
-    fun appendDigit(): Unit{
-
     }
 
     fun displayDigits(displayDigitsList: MutableList<String>): String {
