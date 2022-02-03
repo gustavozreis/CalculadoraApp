@@ -43,10 +43,16 @@ class MainActivity : AppCompatActivity() {
 
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
-        viewModel.tempList[0] = displayDigits?.text.toString()
-        viewModel.tempList[1] = view.text.toString()
-        displayDigits?.append(" ${viewModel.tempList[1]} ")
-        viewModel.numSeguranca = true
+        val contemOperador: Boolean = (displayDigits!!.text!!.contains("+")
+                || displayDigits!!.text!!.contains("-")
+                || displayDigits!!.text!!.contains("*")
+                || displayDigits!!.text!!.contains("/"))
+        if (!contemOperador) {
+                viewModel.tempList[0] = displayDigits?.text.toString()
+                viewModel.tempList[1] = view.text.toString()
+                displayDigits?.append(" ${viewModel.tempList[1]} ")
+                viewModel.numSeguranca = true
+            }
     }
 
     // Função que chama o retorna resultado do ViewModel
