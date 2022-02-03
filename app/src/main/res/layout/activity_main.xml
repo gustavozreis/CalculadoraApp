@@ -29,6 +29,7 @@
             android:padding="10dp"
             android:text="Hello World!"
             android:textSize="48sp"
+            android:maxLength="12"
             tools:text="313511" />
 
         <LinearLayout

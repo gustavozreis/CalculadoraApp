@@ -13,14 +13,16 @@ import com.gustavozreis.calculadoraviewmodel.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null // viewbinding
-    private var displayDigits: TextView? = null // declarar variavel do digito que aparece quando app é iniciado
+    private var displayDigits: TextView? =
+        null // declarar variavel do digito que aparece quando app é iniciado
     val viewModel: CalculatorViewModel by viewModels() // instanciar viewmodel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //instanciar view binding
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.mainActivity = this@MainActivity // acoplar layout
 
         displayDigits = binding.tvDisplayDigits
