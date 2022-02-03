@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         null // declarar variavel do digito que aparece quando app é iniciado
     val viewModel: CalculatorViewModel by viewModels() // instanciar viewmodel
 
+    var contemOperador: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         displayDigits = binding.tvDisplayDigits
         displayDigits?.text = ""
-
     }
 
     // função tem como parametro o texto (número) do botão e adiciona ao final do textview com o número
@@ -41,24 +42,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Função que checa se existe um operador na expressao do visor
+    fun contemOperador(): Boolean = (displayDigits!!.text!!.contains("+")
+            || displayDigits!!.text!!.contains("-")
+            || displayDigits!!.text!!.contains("*")
+            || displayDigits!!.text!!.contains("/"))
+
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
-        val contemOperador: Boolean = (displayDigits!!.text!!.contains("+")
-                || displayDigits!!.text!!.contains("-")
-                || displayDigits!!.text!!.contains("*")
-                || displayDigits!!.text!!.contains("/"))
-        if (!contemOperador) {
-                viewModel.tempList[0] = displayDigits?.text.toString()
-                viewModel.tempList[1] = view.text.toString()
-                displayDigits?.append(" ${viewModel.tempList[1]} ")
-                viewModel.numSeguranca = true
-            }
+        if (!contemOperador()) {
+            viewModel.tempList[0] = displayDigits?.text.toString()
+            viewModel.tempList[1] = view.text.toString()
+            displayDigits?.append(" ${viewModel.tempList[1]} ")
+            viewModel.numSeguranca = true
+        }
     }
 
     // Função que chama o retorna resultado do ViewModel
     fun resultado() {
-        val resultado: String = viewModel.resultadoDaOperacao(displayDigits as TextView)
-        displayDigits?.text = resultado.toString()
+        if (contemOperador()) {
+            val resultado: String = viewModel.resultadoDaOperacao(displayDigits as TextView)
+            displayDigits?.text = resultado.toString()
+        }
     }
 
     // Função que limpa o numero da tela
