@@ -17,7 +17,7 @@ class CalculatorViewModel : ViewModel() {
     fun resultadoDaOperacao(view: TextView): String {
         var resultado: Long = 0
         val error: String = "error: divided by 0"
-        tempList[2] = view.text.toString()
+        tempList[2] = view.text.toString().substring(tempList[0].length + 3)
 
         if (tempList[2] == "") tempList[2] = "0"
         if (tempList[0] == "") tempList[0] = "0"

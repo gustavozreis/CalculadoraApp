@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         if (viewModel.numSeguranca == false) {
             displayDigits?.append(view.text)
         } else {
-            displayDigits?.text = ""
+            //displayDigits?.text = ""
             viewModel.numSeguranca = false
             displayDigits?.append(view.text)
         }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     fun escolhaDaOperacao(view: TextView) {
         viewModel.tempList[0] = displayDigits?.text.toString()
         viewModel.tempList[1] = view.text.toString()
-        displayDigits?.text = viewModel.tempList[1]
+        displayDigits?.append(" ${viewModel.tempList[1]} ")
         viewModel.numSeguranca = true
     }
 
