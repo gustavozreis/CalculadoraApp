@@ -41,11 +41,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Função que alteram as variáveis de entrada
-    fun pegaNumeros(view: TextView) {
-        viewModel.tempList[0] = view.text.toString()
-    }
-
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
         viewModel.tempList[0] = displayDigits?.text.toString()

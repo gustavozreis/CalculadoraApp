@@ -6,16 +6,8 @@ import com.gustavozreis.calculadoraviewmodel.MainActivity
 
 class CalculatorViewModel : ViewModel() {
 
-    // Lista que inicia o número mostrado na tela
-    val displayDigitsList: MutableList<String> = mutableListOf("")
-
     // Instancia a lista que vai ser usada para separar os dados
     var tempList: MutableList<String> = mutableListOf("0", "+", "0")
-
-    // Variaveis de entrada para a operação
-    var numPrimeiro: Int = 0
-    var numSegundo: Int = 0
-    var operacao: String = "+"
 
     // Variável de seguranca para zerar a calculadora apos clilcar em outro numero apos receber
     // resultado
@@ -51,14 +43,6 @@ class CalculatorViewModel : ViewModel() {
             numSeguranca = true
         }
         return resultado.toString()
-    }
-
-    fun displayDigits(displayDigitsList: MutableList<String>): String {
-        var digits: String = ""
-        for (num in displayDigitsList) {
-            digits = "$digits$num"
-        }
-        return digits
     }
 
 }
