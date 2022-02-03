@@ -47,13 +47,14 @@ class MainActivity : AppCompatActivity() {
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
         viewModel.tempList[0] = displayDigits?.text.toString()
-        displayDigits?.text = ""
         viewModel.tempList[1] = view.text.toString()
+        displayDigits?.text = viewModel.tempList[1]
+        viewModel.numSeguranca = true
     }
 
     // Função que chama o retorna resultado do ViewModel
     fun resultado() {
-        val resultado: Int = viewModel.resultadoDaOperacao(displayDigits as TextView)
+        val resultado: String = viewModel.resultadoDaOperacao(displayDigits as TextView)
         displayDigits?.text = resultado.toString()
     }
 
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.tempList[0] = ""
         viewModel.tempList[1] = "+"
         viewModel.tempList[2] = "0"
-        displayDigits?.text = "0"
+        displayDigits?.text = ""
     }
 
 

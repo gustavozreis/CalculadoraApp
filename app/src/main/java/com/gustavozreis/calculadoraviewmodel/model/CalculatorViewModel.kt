@@ -22,25 +22,35 @@ class CalculatorViewModel : ViewModel() {
     var numSeguranca: Boolean = false
 
     // Função que retorna o resultado
-    fun resultadoDaOperacao(view: TextView): Int {
+    fun resultadoDaOperacao(view: TextView): String {
         var resultado: Int = 0
+        val error: String = "error: divided by 0"
         tempList[2] = view.text.toString()
+
         if (tempList[2] == "") tempList[2] = "0"
         if (tempList[0] == "") tempList[0] = "0"
-        val num1 = tempList[0].toInt()
-        val num2 = tempList[2].toInt()
-        when (tempList[1]) {
-            "+" -> resultado = num1 + num2
-            "-" -> resultado = num1 - num2
-            "/" -> resultado = num1 / num2
-            "*" -> resultado = num1 * num2
-        }
-        tempList[0] = "0"
-        tempList[1] = "+"
-        tempList[2] = "0"
 
-        numSeguranca = true
-        return resultado
+        if (tempList[2] == "0") {
+            numSeguranca = true
+            return error
+        } else {
+
+            val num1 = tempList[0].toInt()
+            val num2 = tempList[2].toInt()
+
+            when (tempList[1]) {
+                "+" -> resultado = num1 + num2
+                "-" -> resultado = num1 - num2
+                "/" -> resultado = num1 / num2
+                "*" -> resultado = num1 * num2
+            }
+            tempList[0] = "0"
+            tempList[1] = "+"
+            tempList[2] = "0"
+
+            numSeguranca = true
+        }
+        return resultado.toString()
     }
 
     fun displayDigits(displayDigitsList: MutableList<String>): String {
