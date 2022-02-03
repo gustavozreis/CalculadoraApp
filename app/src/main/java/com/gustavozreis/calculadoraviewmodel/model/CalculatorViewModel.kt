@@ -10,7 +10,7 @@ class CalculatorViewModel : ViewModel() {
     val displayDigitsList: MutableList<String> = mutableListOf("")
 
     // Instancia a lista que vai ser usada para separar os dados
-    var tempList: MutableList<String> = mutableListOf()
+    var tempList: MutableList<String> = mutableListOf("0","+","0")
 
     // Variaveis de entrada para a operação
     var numPrimeiro: Int = 0
@@ -18,10 +18,11 @@ class CalculatorViewModel : ViewModel() {
     var operacao: String = ""
 
     // Função que retorna o resultado
-    fun resultadoDaOperacao(view: TextView): String {
+    fun resultadoDaOperacao(view: TextView): Int {
         var resultado: Int = 0
         tempList.add(view.text.toString())
         if (tempList[2] == "") tempList[2] = "0"
+        if (tempList[0] == "") tempList[0] = "0"
         when (tempList[1]) {
             "+" -> resultado = tempList[0].toInt() + tempList[2].toInt()
             "-" -> resultado = tempList[0].toInt() - tempList[2].toInt()
@@ -29,7 +30,7 @@ class CalculatorViewModel : ViewModel() {
             "*" -> resultado = tempList[0].toInt() / tempList[2].toInt()
         }
         tempList.clear()
-        return resultado.toString()
+        return resultado
     }
 
 

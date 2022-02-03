@@ -24,32 +24,31 @@ class MainActivity : AppCompatActivity() {
         binding.mainActivity = this@MainActivity // acoplar layout
 
         displayDigits = binding.tvDisplayDigits
-        displayDigits?.text = "0"
+        displayDigits?.text = ""
 
     }
 
     // função tem como parametro o texto (número) do botão e adiciona ao final do textview com o número
     fun appendDigit(view: TextView) {
         displayDigits?.append(view.text)
-        Toast.makeText(this, "funcao chamada", Toast.LENGTH_LONG).show()
     }
 
     // Função que alteram as variáveis de entrada
     fun pegaNumeros(view: TextView) {
-        viewModel.tempList.add(view.text.toString())
+        viewModel.tempList[0] = view.text.toString()
     }
 
     // Função que define o tipo de operação
     fun escolhaDaOperacao(view: TextView) {
-        viewModel.tempList.add(displayDigits.toString())
-        viewModel.tempList.add(view.text.toString())
+        viewModel.tempList[2] = displayDigits.toString()
         displayDigits?.text = ""
+        viewModel.tempList[1] = view.text.toString()
     }
 
     // Função que chama o retorna resultado do ViewModel
     fun resultado() {
-        val resultado: String = viewModel.resultadoDaOperacao(displayDigits as TextView)
-        displayDigits?.text = resultado
+        val resultado: Int = viewModel.resultadoDaOperacao(displayDigits as TextView)
+        displayDigits?.text = resultado.toString()
     }
 
 
