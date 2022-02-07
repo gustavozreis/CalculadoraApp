@@ -2,14 +2,13 @@ package com.gustavozreis.calculadoraviewmodel.model
 
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
-import com.gustavozreis.calculadoraviewmodel.MainActivity
 
 class CalculatorViewModel : ViewModel() {
 
     // Instancia a lista que vai ser usada para separar os dados
     var tempList: MutableList<String> = mutableListOf("0", "+", "0")
 
-    // Variável de seguranca para zerar a calculadora apos clilcar em outro numero apos receber
+    // Variável de seguranca para zerar a calculadora ao clilcar em outro numero apos receber
     // resultado
     var numSeguranca: Boolean = false
 

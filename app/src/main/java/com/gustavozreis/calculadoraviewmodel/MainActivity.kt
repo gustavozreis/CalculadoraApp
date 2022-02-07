@@ -12,7 +12,6 @@ import com.gustavozreis.calculadoraviewmodel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var binding: ActivityMainBinding? = null // viewbinding
     private var displayDigits: TextView? =
         null // declarar variavel do digito que aparece quando app é iniciado
     val viewModel: CalculatorViewModel by viewModels() // instanciar viewmodel
