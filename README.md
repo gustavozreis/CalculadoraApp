@@ -1,4 +1,4 @@
-# Calculado View Model
+# Calculadora View Model
 
 Criei esse projeto para colocar em prática e treinar algumas habilidades que estou aprendendo na minha trajetória de me tornar um Desenvolvedor Android.
 
